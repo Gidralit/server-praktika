@@ -1,0 +1,82 @@
+.doctors-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.section-title {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+    margin: 2rem 0 1.5rem;
+}
+
+.doctors-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.doctor-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+}
+
+.doctor-header {
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.doctor-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.info-group {
+    margin-bottom: 0.5rem;
+}
+
+.info-label {
+    color: #7f8c8d;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.info-value {
+    color: #2c3e50;
+}
+
+.positions-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.position-item {
+    background: #f0f8ff;
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.add-button {
+    width: fit-content;
+    display: flex;
+    background: #3498db;
+    color: white!important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+.add-button:hover {
+    background: #2980b9;
+}

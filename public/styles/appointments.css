@@ -1,0 +1,99 @@
+.appointments-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.create-link {
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.create-link:hover {
+    background: #45a049;
+}
+
+.appointments-list {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.appointment-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.appointment-info {
+    margin-bottom: 10px;
+}
+
+.appointment-info p {
+    margin: 8px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.doctor-info {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.patient-info {
+    color: #16a085;
+}
+
+.appointment-date {
+    color: #e74c3c;
+    font-style: italic;
+}
+
+.cancel-form {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.cancel-button {
+    padding: 8px 25px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cancel-button:hover {
+    background: #c0392b;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.success {
+    background: #dff0d8;
+    color: #3c763d;
+}
+
+.error {
+    background: #f2dede;
+    color: #a94442;
+}
