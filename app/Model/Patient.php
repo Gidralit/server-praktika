@@ -57,20 +57,29 @@ class Patient extends Model implements IdentityInterface
     public static function searchDoctors($fio, $id)
     {
         $data = preg_split('/\s+/', trim($fio));
-        $doctors = Doctor::query()
-            ->where('surname', 'LIKE', "%$data[0]%")
-            ->orWhere('patronym', 'LIKE', "%$data[2]%")
-            ->orWhere('name', 'LIKE', "%$data[1]%")->get();
-        $appointments = [];
-        foreach ($doctors as $doctor) {
-            $doctorAppointments = Appointment::query()
-                ->where('doctor_id', $doctor->id)
-                ->where('patient_id', $id)->get();
+        switch (count($data)) {
+            case 1:
+                $doctors = Doctor::query()
+                    ->where('surname', 'LIKE', "%$data[0]%")->get(); break;
+            case 2:
+                $doctors = Doctor::query()
+                    ->where('surname', 'LIKE', "%$data[0]%")
+                    ->orWhere('patronym', 'LIKE', "%$data[2]%")->get(); break;
+            case 3:
+                $doctors = Doctor::query()
+                    ->where('surname', 'LIKE', "%$data[0]%")
+                    ->orWhere('patronym', 'LIKE', "%$data[2]%")
+                    ->orWhere('name', 'LIKE', "%$data[1]%")->get(); break;
+        }
 
-            foreach ($doctorAppointments as $doctorAppointment) {
-                $appointments[] = Doctor::where('id', $doctorAppointment->doctor_id)->get();
+        $doctorsPatient = [];
+
+        foreach ($doctors as $doctor) {
+            if ($doctor->patients()->where('patient_id', $id)->exists()){
+                $doctorsPatient[] = $doctor;
             }
         }
-        return $appointments;
+
+        return $doctorsPatient;
     }
 }

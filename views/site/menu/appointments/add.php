@@ -27,9 +27,9 @@
 
         <div class="form-group">
             <label>Время записи:</label>
-            <input type="datetime-local" name="date_time" required pattern="\d{4}-\d{2}-\d{2}">
+            <input type="datetime-local" name="date_time" required>
         </div>
-
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <button type="submit" class="form-button">Создать запись</button>
     </form>
 </div>

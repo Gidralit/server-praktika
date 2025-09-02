@@ -11,12 +11,12 @@ use Controllers\AppointmentsController;
 #Route::add('GET', '/hello', [Controllers\Site::class, 'hello'])
 #    ->middleware('auth');
 #Route::add(['GET', 'POST'], '/signup', [Controllers\Site::class, 'signup']);
-#Route::add(['GET', 'POST'], '/login', [Controllers\Site::class, 'login']);
+#Route::add(['GET', 'POST'], '/signin', [Controllers\Site::class, 'login']);
 #Route::add('GET', '/logout', [Controllers\Site::class, 'logout']);
 
 Route::add(['GET', 'POST'], '/login', [AuthController::class, 'login']);
 Route::add(['GET'], '/logout', [AuthController::class, 'logout']);
-Route::add(['GET'], '/main', [AdminController::class, 'index'])->middleware('admin');
+Route::add(['GET'], '/', [AdminController::class, 'index'])->middleware('admin');
 Route::add(['GET', 'POST'], '/employee/add', [AdminController::class, 'addEmployee'])->middleware('admin');
 
 Route::add(['GET'], '/menu', [EmployeeController::class, 'index'])->middleware('auth');

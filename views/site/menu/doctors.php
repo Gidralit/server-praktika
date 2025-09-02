@@ -2,8 +2,16 @@
 <div class="doctors-container">
     <h2 class="section-title">Взаимодействие с врачами</h2>
 
+    <?php if (!empty($message)): ?>
+        <div class="message-box"><?= $message ?? '' ?></div>
+    <?php elseif(!empty($_SESSION['message'])): ?>
+        <?php $message = $_SESSION['message'];
+        unset($_SESSION['message']); ?>
+        <div class="message-box"> <?= $message ?? '' ?> </div>
+    <?php endif; ?>
+
+    <a href="<?= app()->route->getUrl('/doctors/add') ?>" class="add-button">Добавить врача</a>
     <?php if (count($doctors) != 0): ?>
-        <a href="<?= app()->route->getUrl('/doctors/add') ?>" class="add-button">Добавить врача</a>
         <h3 class="section-title">Список врачей</h3>
         <div class="doctors-list">
             <?php foreach ($doctors as $doctor): ?>
@@ -11,14 +19,18 @@
                     <h4 class="doctor-header"><?= $doctor->surname ?> <?= $doctor->name ?> <?= $doctor->patronym ?></h4>
 
                     <div class="doctor-info">
+                        <img src="<?= $doctor->photo_path ?: '/public/uploads/doctors/default-doctor.jpg' ?>"
+                             alt="<?= $doctor->surname . ' ' . $doctor->name ?>"
+                             width="100" height="100" style="object-fit: cover; border-radius: 5px;">
+
                         <div class="info-group">
                             <span class="info-label">Дата рождения:</span>
-                            <span class="info-value"><?= $doctor->birth_date ?></span>
+                            <span class="position-item"><?= $doctor->birth_date ?></span>
                         </div>
 
                         <div class="info-group">
                             <span class="info-label">Специализация:</span>
-                            <span class="info-value"><?php if($doctor->specialize): ?><?= $doctor->specialize ?><?php else: ?>Специализация отсутствует <?php endif; ?></span>
+                            <span class="position-item"><?php if($doctor->specializes): ?><?= $doctor->specializes[0]->name ?><?php else: ?>Специализация отсутствует <?php endif; ?></span>
                         </div>
 
                         <div class="info-group">

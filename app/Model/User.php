@@ -11,10 +11,12 @@ class User extends Model implements IdentityInterface
     use HasFactory;
 
     public $timestamps = false;
+
+    public $table = 'users';
     protected $fillable = [
-        'role_id',
         'username',
         'password',
+        'role_id'
     ];
 
     protected static function booted()

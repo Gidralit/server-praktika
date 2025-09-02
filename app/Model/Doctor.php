@@ -16,6 +16,7 @@ class Doctor extends Model implements IdentityInterface
         'name',
         'patronym',
         'birth_date',
+        'photo_path'
     ];
 
     //Выборка пользователя по первичному ключу
@@ -58,5 +59,38 @@ class Doctor extends Model implements IdentityInterface
     public function specializes()
     {
         return $this->belongsToMany(Specialize::class, 'specializations_doctors', 'doctor_id', 'spec_id');
+    }
+
+    public function handlePhotoUpload(?array $file): ?array
+    {
+        if (!$file || $file['error'] !== UPLOAD_ERR_OK) {
+            return null;
+        }
+
+        $allowedTypes = ['image/jpeg', 'image/png'];
+        $fileType = mime_content_type($file['tmp_name']);
+
+        if (!in_array($fileType, $allowedTypes)) {
+            return ['error' => 'Разрешены только PNG JPG JPEG изображения'];
+        }
+
+        if ($file['size'] > 2 * 1024 * 1024) {
+            return ['error' => 'Размер файла не должен превышать 2МБ'];
+        }
+
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/public/uploads/doctors/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $filename = uniqid() . '.' . $extension;
+        $filePath = $uploadDir . $filename;
+
+        if(!move_uploaded_file($file['tmp_name'], $filePath)) {
+            return ['error' => 'Ошибка при сохранении файла...'];
+        }
+
+        return ['url' => '/public/uploads/doctors/' . $filename];
     }
 }

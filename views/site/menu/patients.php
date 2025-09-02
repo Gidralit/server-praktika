@@ -4,6 +4,10 @@
 
     <?php if (!empty($message)): ?>
         <div class="message-box"><?= $message ?? '' ?></div>
+    <?php else: ?>
+        <?php $message = $_SESSION['message'];
+            unset($_SESSION['message']); ?>
+        <div class="message-box"> <?= $message ?? '' ?> </div>
     <?php endif; ?>
 
     <a href="<?= app()->route->getUrl('/patients/add') ?>" class="add-patient-link">Добавить пациента</a>

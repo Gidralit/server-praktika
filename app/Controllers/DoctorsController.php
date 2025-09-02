@@ -19,11 +19,14 @@ class DoctorsController
             case 'GET':
                 return new View('site.menu.doctor.add', ['positions' => Position::all(), 'specializes' => Specialize::all()]);
             case 'POST':
-                $doctor = Doctor::create(['surname' => $request->surname, 'name' => $request->name, 'patronym' => $request->patronym, 'birth_date' => $request->birth_date]);
+                $doctorModel = new Doctor();
+                $doctor = Doctor::create(['surname' => $request->surname, 'name' => $request->name, 'patronym' => $request->patronym, 'birth_date' => $request->birth_date, 'photo_path' => $doctorModel->handlePhotoUpload($_FILES['photo'] ?? null)['url']]);
                 $doctor->positions()->attach($request->position);
                 $doctor->specializes()->attach($request->specialize);
+                $_SESSION['message'] = 'Вы успешно добавили врача!';
+                header('Location: /doctors');
+                exit();
         }
-        return new View('site.menu.doctors', ['message' => 'Вы успешно добавили врача!', 'doctors' => Doctor::all()]);
     }
 
     public function showPatients(int $id): string

@@ -22,7 +22,7 @@ class AuthController
                         app()->route->redirect('/menu');
                         break;
                     }
-                    app()->route->redirect('/main');
+                    app()->route->redirect('/');
                 }
                 return new View('site.login', ['message' => 'Неправильные логин или пароль']);
         }

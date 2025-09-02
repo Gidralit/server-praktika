@@ -17,21 +17,24 @@
             <?php foreach ($doctors as $doctor): ?>
                 <div class="doctor-card">
                     <div class="doctor-info">
-                        <p><strong>Фамилия:</strong> <?= $doctor[0]->surname ?></p>
-                        <p><strong>Имя:</strong> <?= $doctor[0]->name ?></p>
-                        <p><strong>Отчество:</strong> <?= $doctor[0]->patronym ?></p>
+                        <img src="<?= $doctor->photo_path ?: '/public/uploads/doctors/default-doctor.jpg' ?>"
+                             alt="<?= $doctor->surname . ' ' . $doctor->name ?>"
+                             width="100" height="100" style="object-fit: cover; border-radius: 5px;">
+                        <p><strong>Фамилия:</strong> <?= $doctor->surname ?></p>
+                        <p><strong>Имя:</strong> <?= $doctor->name ?></p>
+                        <p><strong>Отчество:</strong> <?= $doctor->patronym ?></p>
                     </div>
 
                     <h4 class="section-title">Должности:</h4>
                     <ul class="details-list">
-                        <?php foreach ($doctor[0]->positions as $position): ?>
+                        <?php foreach ($doctor->positions as $position): ?>
                             <li><?= $position->name ?></li>
                         <?php endforeach; ?>
                     </ul>
 
                     <h4 class="section-title">Специализации:</h4>
                     <ul class="details-list">
-                        <?php foreach ($doctor[0]->specializes as $specialize): ?>
+                        <?php foreach ($doctor->specializes as $specialize): ?>
                             <li><?= $specialize->name ?></li>
                         <?php endforeach; ?>
                     </ul>

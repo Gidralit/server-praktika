@@ -19,7 +19,7 @@
         else:
             ?>
             <?php if (app()->auth->user()->role_id === 1): ?>
-            <a class="nav-link" href="<?= app()->route->getUrl('/main') ?>">Список сотрудников</a>
+            <a class="nav-link" href="<?= app()->route->getUrl('/') ?>">Список сотрудников</a>
         <?php endif; ?>
             <a class="nav-link" href="<?= app()->route->getUrl('/menu') ?>">Меню взаимодействий</a>
             <a class="nav-link" href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->username ?>)</a>

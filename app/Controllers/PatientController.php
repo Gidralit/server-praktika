@@ -17,7 +17,9 @@ class PatientController
                 return new View('site.menu.patient.add');
             case 'POST':
                 Patient::create($request->all());
-                return new View('site.menu.patients', ['message' => 'Вы успещно добавили пациента!']);
+                $_SESSION['message'] = 'Вы успешно добавили пациента!';
+                header('Location: /patients');
+                exit();
         }
     }
 

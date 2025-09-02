@@ -14,6 +14,7 @@
         </div>
     <?php else: ?>
         <form method="post" class="auth-form">
+            <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <div class="form-group">
                 <label>Логин</label>
                 <input type="text" name="username" required>
