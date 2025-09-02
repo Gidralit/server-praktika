@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Model\User;
 use Src\Request;
-use Src\Validator\Validator;
+use Gidralit\Validators\Validator;
 use Src\View;
 
 class AdminController
