@@ -1,0 +1,74 @@
+.patients-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.page-title {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.message-box {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.add-patient-link {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 15px 0;
+    transition: background 0.3s;
+}
+
+.add-patient-link:hover {
+    background: #2980b9;
+}
+
+.patients-list {
+    margin-top: 30px;
+}
+
+.patient-card {
+    background: white;
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.patient-card p {
+    margin: 8px 0;
+    color: #34495e;
+}
+
+.patient-actions {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ecf0f1;
+}
+
+.patient-actions a {
+    display: inline-block;
+    color: #3498db;
+    text-decoration: none;
+    margin-right: 25px;
+    padding: 6px 12px;
+    transition: color 0.3s;
+}
+
+.patient-actions a:hover {
+    color: #1a5a8c;
+    text-decoration: underline;
+}

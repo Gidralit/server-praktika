@@ -1,0 +1,29 @@
+{
+    "name": "gidralit/server-praktika",
+    "description": "custom framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gidralit",
+            "email": "feodorkrutkin23@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0",
+        "illuminate/database": "^11.0",
+        "illuminate/events": "^11.0",
+        "nikic/fast-route": "^2.0@dev",
+        "gidralit/validator-praktika": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "core/Src/",
+            "": "app/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "11.5.x-dev"
+    }
+}
